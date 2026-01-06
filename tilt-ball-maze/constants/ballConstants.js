@@ -1,0 +1,7 @@
+const START_X = 0;
+const START_Y = 0;
+const SPEED = 5;
+const BALL_DIAMETER = 50;
+const BALL_RADIUS = BALL_DIAMETER / 2;
+
+export { START_X, START_Y, SPEED, BALL_DIAMETER, BALL_RADIUS };
