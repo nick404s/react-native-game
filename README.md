@@ -6,5 +6,6 @@
 
 - JavaScript
 - React Native
-- Expo Framework
-- Expo Sensors API (Accelerometer)
+- React Native Reanimated API
+- Expo
+- Expo Sensors API
