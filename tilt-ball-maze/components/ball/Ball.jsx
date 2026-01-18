@@ -45,6 +45,7 @@ const Ball = ({ mazeBounds, wallsShared, winAreaShared }) => {
   const sensorX = useSharedValue(0);
   const sensorY = useSharedValue(0);
 
+  // subscribe to the sensor data. set for 60 fps
   useSensor(1000 / 60, sensorX, sensorY);
 
   // handle game over state with a delay
@@ -80,12 +81,6 @@ const Ball = ({ mazeBounds, wallsShared, winAreaShared }) => {
     let adjustedSensorX = sensorX.value;
     let adjustedSensorY = sensorY.value;
 
-    // invert x and y for ios coordinate system
-    // if (Platform.OS==='ios') {
-    //   adjustedSensorX = -adjustedSensorX;
-    //   adjustedSensorY = -adjustedSensorY;
-    // }
-
     // calculate the ball movement with adjusted values
     let newX = currentBallX + adjustedSensorX * -SPEED;
     let newY = currentBallY + adjustedSensorY * SPEED;
@@ -111,7 +106,7 @@ const Ball = ({ mazeBounds, wallsShared, winAreaShared }) => {
         ballBottom > winArea.y &&
         ballTop < winArea.y + winArea.height
       ) {
-        // set game over with delay
+        // set game over with delay on the JS thread
         scheduleOnRN(gameOverWithDelay);
       }
 
